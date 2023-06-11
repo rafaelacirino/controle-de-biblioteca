@@ -1,4 +1,14 @@
-<span>{{ title }} app is running!</span>
+<header>
+  <app-menu></app-menu>
+</header>
 
-<app-painel></app-painel>
-<app-menu></app-menu>
+<main>
+ <router-outlet></router-outlet>
+</main>
+
+<app-footer>
+  <span>
+    {{this?.currentDate | date: "HH:mm:ss"}}
+  </span>
+  - Latitude: {{this.coords?.latitude}} e Longitude: {{this.coords?.longitude}}
+</app-footer>

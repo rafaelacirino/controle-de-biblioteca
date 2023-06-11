@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import * as M from 'materialize-css';
 
 @Component({
@@ -6,6 +6,24 @@ import * as M from 'materialize-css';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
+
   title = 'Controle de Biblioteca';
+  isActive = true;
+  isAdmin = true;
+  coords: any;
+  currentDate: Date;
+
+  constructor(){
+    this.currentDate = new Date();
+  }
+
+  ngOnInit(): void {
+    navigator.geolocation.getCurrentPosition((position) => {
+      this.coords = position.coords;
+    })
+    setInterval(() => {
+      this.currentDate = new Date();
+    }, 1000);
+  }
 }
